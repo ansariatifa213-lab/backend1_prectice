@@ -6,7 +6,7 @@ const app = express();
 app.use(express.json());
 
 //mongoose connection
-mongoose.connect("mongodb://127.0.0.1:27017").then(() => {
+mongoose.connect("mongodb://127.0.0.1:27017/faujya").then(() => {
   console.log("connected");
 });
 
@@ -16,7 +16,7 @@ app.get("/", (req, res) => {
 
 
 app.post("/",(req, res) =>{
-  const Blog = blog({
+  const blog = Blog({
     title : req?.body.title || " ",
     username : req?.body.username || " ",
     content : req?.body.content || " ",
@@ -33,4 +33,3 @@ const PORT = 5000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
-console.log("asads");
